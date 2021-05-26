@@ -2,7 +2,7 @@ let users = {
   sarahedo: {
     id: 'sarahedo',
     name: 'Sarah Edo',
-    avatarURL: ,
+    avatarURL: 'https://www.pngkey.com/png/detail/1010-10107790_kathi-online-avatar-maker.png',
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
       "6ni6ok3ym7mf1p33lnez": 'optionTwo',
@@ -14,7 +14,7 @@ let users = {
   tylermcginnis: {
     id: 'tylermcginnis',
     name: 'Tyler McGinnis',
-    avatarURL: ,
+    avatarURL: 'https://res.cloudinary.com/practicaldev/image/fetch/s--XSU0DRVd--/c_fill,f_auto,fl_progressive,h_320,q_auto,w_320/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/830/5ef86a35-5fce-4cb6-a2d6-7d452ed90b22.jpg',
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
       "xj352vofupe1dqz9emx13r": 'optionTwo',
@@ -24,7 +24,7 @@ let users = {
   johndoe: {
     id: 'johndoe',
     name: 'John Doe',
-    avatarURL: ,
+    avatarURL: 'https://p6.focus.de/img/kultur/kino_tv/id_12614029/compressed-a4087641-a49e-4540-bf52-e8df5315c55b.jpg?im=Resize%3D%28800%2C500%29&hash=ab4cdf181cb25e0d5cd47c2f0967877a508e96a5574a0fc1f8ac5cb99f1bac0f',
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
