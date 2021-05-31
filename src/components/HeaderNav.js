@@ -1,17 +1,41 @@
-import React from 'react'
+import React, { Component, Fragment } from 'react'
+import { connect } from 'react-redux'
 // import { NavLink } from 'react-router-dom'
-import { AppBar, Button, Toolbar } from '@material-ui/core';
+import { styled } from '@material-ui/core/styles'
+import { AppBar, Button, Toolbar } from '@material-ui/core'
+import { logout } from '../actions/auth'
 
-export default function HeaderNav () {
-  return (
-    <AppBar position="static">
-      <Toolbar>
-        <Button color="primary" variant="contained">Home</Button>
-        <Button color="primary" variant="contained">Create Poll</Button>
-        <Button color="primary" variant="contained">Leaderboard</Button>
-      </Toolbar>
-    </AppBar>
+const HeaderButton = styled(Button)({
+  marginRight: 12,
+})
 
+const LogoutButton = styled(Button)({
+  position: 'absolute',
+  right: 24,
+})
+
+class HeaderNav extends Component {
+  onLogout = () => {
+    // TODO: dispatch asynchronous logout action
+    this.props.dispatch(logout())
+  }
+
+  render () {
+    const { auth } = this.props
+
+    return (
+      <AppBar position="static">
+        <Toolbar>
+          <HeaderButton variant="contained">Home</HeaderButton>
+          <HeaderButton variant="contained">Create Poll</HeaderButton>
+          <HeaderButton variant="contained">Leaderboard</HeaderButton>
+          { auth && (
+            <LogoutButton variant="contained" onClick={this.onLogout}>Logout</LogoutButton>
+          )}
+        </Toolbar>
+      </AppBar>
+    )
+  }
 
     // <nav className='nav'>
     //   <ul>
@@ -27,5 +51,12 @@ export default function HeaderNav () {
     //     </li>
     //   </ul>
     // </nav>
-  )
 }
+
+function mapStateToProps ({ auth }) {
+  return {
+    auth
+  }
+}
+
+export default connect(mapStateToProps)(HeaderNav)
