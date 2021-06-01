@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-// import { NavLink } from 'react-router-dom'
 import { styled } from '@material-ui/core/styles'
-import { AppBar, Button, Toolbar } from '@material-ui/core'
+import { AppBar, Avatar, Box, Button, Toolbar } from '@material-ui/core'
 import { logout } from '../actions/auth'
 import { NavLink } from 'react-router-dom'
 
@@ -10,9 +9,16 @@ const HeaderButton = styled(Button)({
   marginRight: 12,
 })
 
-const LogoutButton = styled(Button)({
+const LoginInfoContainer = styled(Box)({
   position: 'absolute',
   right: 24,
+  display: 'flex',
+  alignItems: 'center',
+})
+
+const LoginInfoElement = styled(Box)({
+  display: 'inline',
+  marginLeft: 24
 })
 
 class HeaderNav extends Component {
@@ -22,7 +28,7 @@ class HeaderNav extends Component {
   }
 
   render () {
-    const { auth } = this.props
+    const { auth, username, avatarURL } = this.props
 
     return (
       <AppBar position="static">
@@ -45,32 +51,28 @@ class HeaderNav extends Component {
 
 
           { auth && (
-            <LogoutButton variant="contained" onClick={this.onLogout}>Logout</LogoutButton>
+            <LoginInfoContainer>
+              <LoginInfoElement>{username}</LoginInfoElement>
+              <LoginInfoElement><Avatar alt='user avatar' src={avatarURL} /></LoginInfoElement>
+              <LoginInfoElement>
+                <Button variant="contained" onClick={this.onLogout}>Logout</Button>
+              </LoginInfoElement>
+            </LoginInfoContainer>
           )}
         </Toolbar>
       </AppBar>
     )
   }
-
-    // <nav className='nav'>
-    //   <ul>
-    //     <li>
-    //       <NavLink to='/' exact activeClassName='active'>
-    //         Home
-    //       </NavLink>
-    //     </li>
-    //     <li>
-    //       <NavLink to='/new' activeClassName='active'>
-    //         New Tweet
-    //       </NavLink>
-    //     </li>
-    //   </ul>
-    // </nav>
 }
 
-function mapStateToProps ({ auth }) {
+function mapStateToProps ({ auth, users }) {
+  const username = auth ? users[auth].name : ''
+  const avatarURL = auth ? users[auth].avatarURL : ''
+
   return {
-    auth
+    auth,
+    username,
+    avatarURL,
   }
 }
 
