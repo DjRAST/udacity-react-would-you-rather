@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { styled } from '@material-ui/core/styles'
 import { AppBar, Button, Toolbar } from '@material-ui/core'
 import { logout } from '../actions/auth'
+import { NavLink } from 'react-router-dom'
 
 const HeaderButton = styled(Button)({
   marginRight: 12,
@@ -26,9 +27,23 @@ class HeaderNav extends Component {
     return (
       <AppBar position="static">
         <Toolbar>
-          <HeaderButton variant="contained">Home</HeaderButton>
-          <HeaderButton variant="contained">Create Poll</HeaderButton>
-          <HeaderButton variant="contained">Leaderboard</HeaderButton>
+          <HeaderButton variant="contained">
+            <NavLink to='/'>
+              Home
+            </NavLink>
+          </HeaderButton>
+          <HeaderButton variant="contained">
+            <NavLink to='/add'>
+              Create Poll
+            </NavLink>
+          </HeaderButton>
+          <HeaderButton variant="contained">
+            <NavLink to='/leaderboard'>
+              Leaderboard
+            </NavLink>
+          </HeaderButton>
+
+
           { auth && (
             <LogoutButton variant="contained" onClick={this.onLogout}>Logout</LogoutButton>
           )}

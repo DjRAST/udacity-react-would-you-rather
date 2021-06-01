@@ -1,10 +1,17 @@
 import { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-
-import HeaderNav from './HeaderNav'
-import LoadingBar from 'react-redux-loading'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import { getInitialData } from '../actions/common'
+
+import LoadingBar from 'react-redux-loading'
+import { Container, Box } from '@material-ui/core'
+import HeaderNav from './HeaderNav'
+import ProtectedRoute from '../components/ProtectedRoute'
+import LoginPage from '../pages/Login'
+import HomePage from '../pages/Home'
+import CreatePollPage from '../pages/CreatePoll'
+import LeaderboardPage from '../pages/Leaderboard'
 
 class App extends Component {
   componentDidMount() {
@@ -12,15 +19,36 @@ class App extends Component {
   }
 
   render () {
+    const { isLoading } = this.props
+
     return (
-      <Fragment>
-        <header>
-          <HeaderNav />
-        </header>
-        <LoadingBar />
-      </Fragment>
+      <Router>
+        <Fragment>
+          <header>
+            <HeaderNav />
+          </header>
+          <LoadingBar />
+          { isLoading
+            ? null
+            : <Container>
+                <Box pt={4}>
+                  <Route path="/login" exact component={LoginPage} />
+                  <ProtectedRoute path="/" exact component={HomePage} />
+                  <ProtectedRoute path="/add" exact component={CreatePollPage} />
+                  <ProtectedRoute path="/leaderboard" exact component={LeaderboardPage} />
+                </Box>
+              </Container>
+          }
+        </Fragment>
+      </Router>
     )
   }
 }
 
-export default connect()(App)
+function mapStateToProps ({ loadingBar }) {
+  return {
+    isLoading: loadingBar.default === 1
+  }
+}
+
+export default connect(mapStateToProps)(App)

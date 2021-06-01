@@ -1,6 +1,8 @@
 import { showLoading, hideLoading } from 'react-redux-loading'
 import { _getUsers, _getQuestions } from '../api/_DATA'
 
+import { setUsers } from './users'
+
 export const getInitialData = () => {
   return (dispatch) => {
     dispatch(showLoading())
@@ -9,7 +11,7 @@ export const getInitialData = () => {
       _getQuestions(),
     ]).then(([users, questions]) => {
         // TODO: add actions & reducers
-        // dispatch(setUsers(users))
+        dispatch(setUsers(users))
         // dispatch(setQuestions(questions))
         dispatch(hideLoading())
       })
