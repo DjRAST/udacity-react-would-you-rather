@@ -1,6 +1,6 @@
 import { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
 import { getInitialData } from '../actions/common'
 
@@ -12,6 +12,7 @@ import LoginPage from '../pages/Login'
 import HomePage from '../pages/Home'
 import CreatePollPage from '../pages/CreatePoll'
 import LeaderboardPage from '../pages/Leaderboard'
+import NotFoundPage from '../pages/404'
 
 class App extends Component {
   componentDidMount() {
@@ -36,6 +37,8 @@ class App extends Component {
                   <ProtectedRoute path="/" exact component={HomePage} />
                   <ProtectedRoute path="/add" exact component={CreatePollPage} />
                   <ProtectedRoute path="/leaderboard" exact component={LeaderboardPage} />
+                  <Route path="/404" component={NotFoundPage} />
+                  <Redirect to="/404" />
                 </Box>
               </Container>
           }
