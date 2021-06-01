@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 // import { NavLink } from 'react-router-dom'
 import { styled } from '@material-ui/core/styles'
@@ -16,8 +16,8 @@ const LogoutButton = styled(Button)({
 
 class HeaderNav extends Component {
   onLogout = () => {
-    // TODO: dispatch asynchronous logout action
     this.props.dispatch(logout())
+    // TODO: route to login page
   }
 
   render () {

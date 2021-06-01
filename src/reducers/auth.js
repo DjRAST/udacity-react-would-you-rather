@@ -1,6 +1,6 @@
-import {LOGIN, LOGOUT} from '../actions/auth'
+import { LOGIN, LOGOUT } from '../actions/auth'
 
-export default (state = null, action) => {
+export default function auth (state = null, action) {
   switch (action.type) {
     case LOGIN:
       return action.id
