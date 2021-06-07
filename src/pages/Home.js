@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Tabs, Tab, Paper, Container, Box } from '@material-ui/core'
+import { Tabs, Tab, Paper, Box } from '@material-ui/core'
 import { connect } from 'react-redux'
 
 import QuestionsPreviewList from '../components/QuestionsPreviewList'
@@ -48,8 +48,8 @@ function mapStateToProps ({ questions, auth }) {
   }
 
   return {
-    unansweredQuestions,
-    answeredQuestions,
+    unansweredQuestions: unansweredQuestions.sort((q1, q2) => (q2.timestamp - q1.timestamp)),
+    answeredQuestions: answeredQuestions.sort((q1, q2) => (q2.timestamp - q1.timestamp)),
   }
 }
 

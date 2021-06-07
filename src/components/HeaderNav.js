@@ -24,7 +24,6 @@ const LoginInfoElement = styled(Box)({
 class HeaderNav extends Component {
   onLogout = () => {
     this.props.dispatch(logout())
-    // TODO: route to login page
   }
 
   render () {
