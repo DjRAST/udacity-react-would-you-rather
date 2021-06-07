@@ -6,7 +6,7 @@ class ProtectedRoute extends Component {
   render () {
     const { auth, component, ...rest } = this.props
 
-    const routeComponent = auth
+    return auth
       ? <Route {...rest} component={component} />
       : <Route {...rest} render={({ location }) => (
         <Redirect
@@ -16,8 +16,6 @@ class ProtectedRoute extends Component {
           }}
         />
       )} />
-
-    return routeComponent
   }
 }
 

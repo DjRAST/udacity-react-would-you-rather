@@ -1,6 +1,6 @@
 import { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
 
 import { getInitialData } from '../actions/common'
 
@@ -33,12 +33,14 @@ class App extends Component {
             ? null
             : <Container>
                 <Box pt={4}>
-                  <Route path="/login" exact component={LoginPage} />
-                  <ProtectedRoute path="/" exact component={HomePage} />
-                  <ProtectedRoute path="/add" exact component={CreatePollPage} />
-                  <ProtectedRoute path="/leaderboard" exact component={LeaderboardPage} />
-                  <Route path="/404" component={NotFoundPage} />
-                  <Redirect to="/404" />
+                  <Switch>
+                    <Route path="/login" exact component={LoginPage} />
+                    <ProtectedRoute path="/" exact component={HomePage} />
+                    <ProtectedRoute path="/add" exact component={CreatePollPage} />
+                    <ProtectedRoute path="/leaderboard" exact component={LeaderboardPage} />
+                    <Route path="/404" exact component={NotFoundPage} />
+                    <Redirect to="/404" />
+                  </Switch>
                 </Box>
               </Container>
           }
