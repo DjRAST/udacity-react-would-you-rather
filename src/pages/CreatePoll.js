@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 class CreatePollPage extends Component {
   render() {
     return (
-      <div>Create Poll</div>
+      <h1>Create Poll</h1>
     )
   }
 }

@@ -32,8 +32,9 @@ class LoginPage extends Component {
 
     return (
       <Box mt={6}>
+        <h1>Login</h1>
         <FormControl variant="filled">
-          <InputLabel>LOGIN</InputLabel>
+          <InputLabel>Choose User</InputLabel>
           <LoginSelectBox
             id='login-select'
             value={selectedUser}
