@@ -12,6 +12,7 @@ import LoginPage from '../pages/Login'
 import HomePage from '../pages/Home'
 import CreatePollPage from '../pages/CreatePoll'
 import LeaderboardPage from '../pages/Leaderboard'
+import QuestionDetail from '../pages/QuestionDetail'
 import NotFoundPage from '../pages/404'
 
 class App extends Component {
@@ -38,6 +39,7 @@ class App extends Component {
                     <ProtectedRoute path="/" exact component={HomePage} />
                     <ProtectedRoute path="/add" exact component={CreatePollPage} />
                     <ProtectedRoute path="/leaderboard" exact component={LeaderboardPage} />
+                    <ProtectedRoute path="/questions/:question_id" exact component={QuestionDetail} />
                     <Route path="/404" exact component={NotFoundPage} />
                     <Redirect to="/404" />
                   </Switch>
