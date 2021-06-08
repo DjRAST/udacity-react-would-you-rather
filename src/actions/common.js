@@ -1,8 +1,8 @@
 import { showLoading, hideLoading } from 'react-redux-loading'
-import { _getUsers, _getQuestions } from '../api/_DATA'
+import { _getUsers, _getQuestions, _saveQuestionAnswer } from '../api/_DATA'
 
 import { setUsers } from './users'
-import { setQuestions } from './questions'
+import { setQuestions, answerQuestion } from './questions'
 
 export const getInitialData = () => {
   return (dispatch) => {
@@ -11,10 +11,19 @@ export const getInitialData = () => {
       _getUsers(),
       _getQuestions(),
     ]).then(([users, questions]) => {
-        // TODO: add actions & reducers
         dispatch(setUsers(users))
         dispatch(setQuestions(questions))
         dispatch(hideLoading())
       })
+  }
+}
+
+export const questionAnswered = (authedUser, qid, answer) => {
+  return (dispatch) => {
+    dispatch(showLoading())
+    _saveQuestionAnswer({authedUser, qid, answer}).then(() => {
+      dispatch(answerQuestion(authedUser, qid, answer))
+      dispatch(hideLoading())
+    })
   }
 }

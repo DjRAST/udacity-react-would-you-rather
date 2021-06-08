@@ -1,5 +1,10 @@
 import PropTypes from 'prop-types'
 
+export const questionAnswer = {
+  optionOne: 'optionOne',
+  optionTwo: 'optionTwo',
+}
+
 export const QuestionOptionType = PropTypes.shape({
   votes: PropTypes.arrayOf(PropTypes.string),
   text: PropTypes.string,

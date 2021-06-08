@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { styled, Box, Button, Paper } from '@material-ui/core'
 import { NavLink } from 'react-router-dom'
 import { QuestionsType } from '../api/model'
+import { QuestionHeader } from '../styles/question'
 
 export const questionsPreviewListPropTypes = {
   questions: QuestionsType.isRequired,
@@ -9,10 +10,6 @@ export const questionsPreviewListPropTypes = {
 
 const Question = styled(Paper)({
   marginBottom: 24,
-})
-
-const QuestionHeader = styled(Box)({
-  background: 'lightblue',
 })
 
 const Italic = styled(Box)({
@@ -47,7 +44,7 @@ class QuestionsPreviewList extends Component {
             </Box>
           </Box>
         </Question>
-    ))
+      ))
     )
   }
 }
