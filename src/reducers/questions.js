@@ -6,9 +6,12 @@ export default function questions (state = {}, action) {
       return action.questions
     case ANSWER_QUESTION:
       const {userId, questionId, option} = action
-      const answeredQuestion = state[questionId]
+      const answeredQuestion = {...state[questionId]}
       answeredQuestion[option].votes.push(userId)
-      return state
+      return {
+        ...state,
+        [questionId]: answeredQuestion
+      }
     default:
       return state
   }

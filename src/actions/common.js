@@ -1,7 +1,7 @@
 import { showLoading, hideLoading } from 'react-redux-loading'
 import { _getUsers, _getQuestions, _saveQuestionAnswer } from '../api/_DATA'
 
-import { setUsers } from './users'
+import { setUsers, addAnswer } from './users'
 import { setQuestions, answerQuestion } from './questions'
 
 export const getInitialData = () => {
@@ -23,6 +23,7 @@ export const questionAnswered = (authedUser, qid, answer) => {
     dispatch(showLoading())
     _saveQuestionAnswer({authedUser, qid, answer}).then(() => {
       dispatch(answerQuestion(authedUser, qid, answer))
+      dispatch(addAnswer(authedUser, qid, answer))
       dispatch(hideLoading())
     })
   }
