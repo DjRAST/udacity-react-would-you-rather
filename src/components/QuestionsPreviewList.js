@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 import { styled, Box, Button, Paper } from '@material-ui/core'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import { QuestionsType } from '../api/model'
+
+export const questionsPreviewListPropTypes = {
+  questions: QuestionsType.isRequired,
+}
 
 const Question = styled(Paper)({
   marginBottom: 24,
@@ -19,10 +24,11 @@ const Answer = styled(Box)({
 })
 
 class QuestionsPreviewList extends Component {
-
   render () {
+    const { questions } = this.props
+
     return (
-      this.props.questions.map((question) => (
+      questions.map((question) => (
         <Question key={question.id}>
           <QuestionHeader p={1}>
             <h3>Poll by {question.author}</h3>
@@ -45,5 +51,7 @@ class QuestionsPreviewList extends Component {
     )
   }
 }
+
+QuestionsPreviewList.propTypes = questionsPreviewListPropTypes
 
 export default QuestionsPreviewList
