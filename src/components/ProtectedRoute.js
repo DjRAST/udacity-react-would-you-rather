@@ -1,28 +1,28 @@
-import React, { Component } from 'react'
-import { Route, Redirect } from 'react-router-dom'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import { Redirect, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class ProtectedRoute extends Component {
-  render () {
-    const { auth, component, ...rest } = this.props
+  render() {
+    const {auth, component, ...rest} = this.props;
 
     return auth
-      ? <Route {...rest} component={component} />
-      : <Route {...rest} render={({ location }) => (
+      ? <Route {...rest} component={component}/>
+      : <Route {...rest} render={({location}) => (
         <Redirect
           to={{
             pathname: '/login',
-            state: { from: location }
+            state: {from: location},
           }}
         />
-      )} />
+      )}/>;
   }
 }
 
-function mapStateToProps ({ auth }) {
+function mapStateToProps({auth}) {
   return {
-    auth
-  }
+    auth,
+  };
 }
 
-export default connect(mapStateToProps)(ProtectedRoute)
+export default connect(mapStateToProps)(ProtectedRoute);

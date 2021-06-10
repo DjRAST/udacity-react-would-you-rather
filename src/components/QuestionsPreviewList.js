@@ -1,28 +1,28 @@
-import React, { Component } from 'react'
-import { styled, Box, Button, Paper } from '@material-ui/core'
-import { NavLink } from 'react-router-dom'
-import { QuestionsType } from '../api/model'
-import { CardHeader } from '../styles/question'
+import React, { Component } from 'react';
+import { Box, Button, Paper, styled } from '@material-ui/core';
+import { NavLink } from 'react-router-dom';
+import { QuestionsType } from '../api/model';
+import { CardHeader } from '../styles/question';
 
 export const questionsPreviewListPropTypes = {
   questions: QuestionsType.isRequired,
-}
+};
 
 const Question = styled(Paper)({
   marginBottom: 24,
-})
+});
 
 const Italic = styled(Box)({
   fontStyle: 'italic',
-})
+});
 
 const Answer = styled(Box)({
-  fontWeight: 'bold'
-})
+  fontWeight: 'bold',
+});
 
 class QuestionsPreviewList extends Component {
-  render () {
-    const { questions } = this.props
+  render() {
+    const {questions} = this.props;
 
     return (
       questions.map((question) => (
@@ -45,10 +45,10 @@ class QuestionsPreviewList extends Component {
           </Box>
         </Question>
       ))
-    )
+    );
   }
 }
 
-QuestionsPreviewList.propTypes = questionsPreviewListPropTypes
+QuestionsPreviewList.propTypes = questionsPreviewListPropTypes;
 
-export default QuestionsPreviewList
+export default QuestionsPreviewList;

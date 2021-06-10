@@ -1,23 +1,23 @@
-import React, { Component, Fragment } from 'react'
-import { Tabs, Tab, Paper, Box } from '@material-ui/core'
-import { connect } from 'react-redux'
+import React, { Component, Fragment } from 'react';
+import { Box, Paper, Tab, Tabs } from '@material-ui/core';
+import { connect } from 'react-redux';
 
-import QuestionsPreviewList from '../components/QuestionsPreviewList'
+import QuestionsPreviewList from '../components/QuestionsPreviewList';
 
 class HomePage extends Component {
   state = {
     selectedTabIndex: 0,
-  }
+  };
 
   onTabChanged = (event, index) => {
     this.setState({
-      selectedTabIndex: index
-    })
-  }
+      selectedTabIndex: index,
+    });
+  };
 
   render() {
-    const {selectedTabIndex} = this.state
-    const {unansweredQuestions, answeredQuestions} = this.props
+    const {selectedTabIndex} = this.state;
+    const {unansweredQuestions, answeredQuestions} = this.props;
 
     return (
       <Fragment>
@@ -28,29 +28,29 @@ class HomePage extends Component {
             <Tab label="Answered"></Tab>
           </Tabs>
           <Box p={3}>
-            {selectedTabIndex === 0 && <QuestionsPreviewList questions={unansweredQuestions} />}
-            {selectedTabIndex === 1 && <QuestionsPreviewList questions={answeredQuestions} />}
+            {selectedTabIndex === 0 && <QuestionsPreviewList questions={unansweredQuestions}/>}
+            {selectedTabIndex === 1 && <QuestionsPreviewList questions={answeredQuestions}/>}
           </Box>
         </Paper>
       </Fragment>
-    )
+    );
   }
 }
 
-function mapStateToProps ({ questions, auth }) {
-  const unansweredQuestions = []
-  const answeredQuestions = []
+function mapStateToProps({questions, auth}) {
+  const unansweredQuestions = [];
+  const answeredQuestions = [];
 
   for (const id in questions) {
     (questions[id].optionOne.votes.includes(auth) || questions[id].optionTwo.votes.includes(auth))
       ? answeredQuestions.push(questions[id])
-      : unansweredQuestions.push(questions[id])
+      : unansweredQuestions.push(questions[id]);
   }
 
   return {
     unansweredQuestions: unansweredQuestions.sort((q1, q2) => (q2.timestamp - q1.timestamp)),
     answeredQuestions: answeredQuestions.sort((q1, q2) => (q2.timestamp - q1.timestamp)),
-  }
+  };
 }
 
-export default connect(mapStateToProps)(HomePage)
+export default connect(mapStateToProps)(HomePage);

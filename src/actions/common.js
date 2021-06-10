@@ -1,33 +1,33 @@
-import { showLoading, hideLoading } from 'react-redux-loading'
-import { _getUsers, _getQuestions, _saveQuestionAnswer, _saveQuestion } from '../api/_DATA'
+import { hideLoading, showLoading } from 'react-redux-loading';
+import { _getQuestions, _getUsers, _saveQuestion, _saveQuestionAnswer } from '../api/_DATA';
 
-import * as userActions from './users'
-import * as questionsActions from './questions'
+import * as userActions from './users';
+import * as questionsActions from './questions';
 
 export const getInitialData = () => {
   return (dispatch) => {
-    dispatch(showLoading())
+    dispatch(showLoading());
     return Promise.all([
       _getUsers(),
       _getQuestions(),
     ]).then(([users, questions]) => {
-        dispatch(userActions.setUsers(users))
-        dispatch(questionsActions.setQuestions(questions))
-        dispatch(hideLoading())
-      })
-  }
-}
+      dispatch(userActions.setUsers(users));
+      dispatch(questionsActions.setQuestions(questions));
+      dispatch(hideLoading());
+    });
+  };
+};
 
 export const questionAnswered = (authedUser, qid, answer) => {
   return (dispatch) => {
-    dispatch(showLoading())
+    dispatch(showLoading());
     _saveQuestionAnswer({authedUser, qid, answer}).then(() => {
-      dispatch(questionsActions.answerQuestion(authedUser, qid, answer))
-      dispatch(userActions.addAnswer(authedUser, qid, answer))
-      dispatch(hideLoading())
-    })
-  }
-}
+      dispatch(questionsActions.answerQuestion(authedUser, qid, answer));
+      dispatch(userActions.addAnswer(authedUser, qid, answer));
+      dispatch(hideLoading());
+    });
+  };
+};
 
 export const questionAdded = (author, optionOneText, optionTwoText) => {
   return (dispatch) => {
@@ -36,8 +36,8 @@ export const questionAdded = (author, optionOneText, optionTwoText) => {
       optionOneText,
       optionTwoText,
     }).then((newQuestion) => {
-      dispatch(questionsActions.addQuestion(newQuestion))
-      dispatch(userActions.addQuestionForUser(author, newQuestion.id))
-    })
-  }
-}
+      dispatch(questionsActions.addQuestion(newQuestion));
+      dispatch(userActions.addQuestionForUser(author, newQuestion.id));
+    });
+  };
+};

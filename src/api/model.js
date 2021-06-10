@@ -1,14 +1,14 @@
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 export const questionAnswer = {
   optionOne: 'optionOne',
   optionTwo: 'optionTwo',
-}
+};
 
 export const QuestionOptionType = PropTypes.shape({
   votes: PropTypes.arrayOf(PropTypes.string),
   text: PropTypes.string,
-})
+});
 
 export const QuestionType = PropTypes.shape({
   id: PropTypes.string,
@@ -16,6 +16,6 @@ export const QuestionType = PropTypes.shape({
   timestamp: PropTypes.number,
   optionOne: QuestionOptionType,
   optionTwo: QuestionOptionType,
-})
+});
 
-export const QuestionsType = PropTypes.arrayOf(QuestionType)
+export const QuestionsType = PropTypes.arrayOf(QuestionType);

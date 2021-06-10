@@ -1,44 +1,44 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import { Box, Button, Paper, TextField } from '@material-ui/core'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { Box, Button, Paper, TextField } from '@material-ui/core';
 
-import { questionAdded } from '../actions/common'
-import { CardHeader } from '../styles/question'
+import { questionAdded } from '../actions/common';
+import { CardHeader } from '../styles/question';
 
 class CreateQuestionPage extends Component {
   state = {
     optionA: '',
     optionB: '',
     toHome: false,
-  }
+  };
 
   optionAChanged = (event) => {
     this.setState({
-      optionA: event.target.value
-    })
-  }
+      optionA: event.target.value,
+    });
+  };
 
   optionBChanged = (event) => {
     this.setState({
-      optionB: event.target.value
-    })
-  }
+      optionB: event.target.value,
+    });
+  };
 
   onSubmit = () => {
-    const { dispatch, auth } = this.props
+    const {dispatch, auth} = this.props;
 
-    dispatch(questionAdded(auth, this.state.optionA, this.state.optionB))
+    dispatch(questionAdded(auth, this.state.optionA, this.state.optionB));
     this.setState({
       toHome: true,
-    })
-  }
+    });
+  };
 
   render() {
-    const isButtonDisabled = this.state.optionA.length === 0 || this.state.optionB.length === 0
+    const isButtonDisabled = this.state.optionA.length === 0 || this.state.optionB.length === 0;
 
     if (this.state.toHome) {
-      return <Redirect to="/" />
+      return <Redirect to="/"/>;
     }
 
     return (
@@ -63,7 +63,7 @@ class CreateQuestionPage extends Component {
           />
           <Box mt={3}>
             <Button
-              variant='contained'
+              variant="contained"
               disabled={isButtonDisabled}
               fullWidth
               onClick={this.onSubmit}
@@ -73,14 +73,14 @@ class CreateQuestionPage extends Component {
           </Box>
         </Box>
       </Paper>
-    )
+    );
   }
 }
 
-function mapStateToProps ({ auth }) {
+function mapStateToProps({auth}) {
   return {
     auth,
-  }
+  };
 }
 
-export default connect(mapStateToProps)(CreateQuestionPage)
+export default connect(mapStateToProps)(CreateQuestionPage);
