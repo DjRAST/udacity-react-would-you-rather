@@ -43,7 +43,7 @@ class CreateQuestionPage extends Component {
 
     return (
       <Paper>
-        <CardHeader p={1}><h1>New Poll</h1></CardHeader>
+        <CardHeader p={1}><h1>Create Poll</h1></CardHeader>
         <Box p={1}>
           <Box mb={1}>Would you rather:</Box>
           <TextField
