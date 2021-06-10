@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Box, Button, Paper, TextField } from '@material-ui/core'
@@ -42,40 +42,37 @@ class CreateQuestionPage extends Component {
     }
 
     return (
-      <Fragment>
-        <h1>Create Poll</h1>
-        <Paper>
-          <CardHeader p={1}><h3>New Poll</h3></CardHeader>
-          <Box p={1}>
-            <Box mb={1}>Would you rather:</Box>
-            <TextField
-              value={this.state.optionA}
-              label="Option A"
-              variant="outlined"
+      <Paper>
+        <CardHeader p={1}><h1>New Poll</h1></CardHeader>
+        <Box p={1}>
+          <Box mb={1}>Would you rather:</Box>
+          <TextField
+            value={this.state.optionA}
+            label="Option A"
+            variant="outlined"
+            fullWidth
+            onChange={this.optionAChanged}
+          />
+          <Box mb={1} mt={1}>or</Box>
+          <TextField
+            value={this.state.optionB}
+            label="Option B"
+            variant="outlined"
+            fullWidth
+            onChange={this.optionBChanged}
+          />
+          <Box mt={3}>
+            <Button
+              variant='contained'
+              disabled={isButtonDisabled}
               fullWidth
-              onChange={this.optionAChanged}
-            />
-            <Box mb={1} mt={1}>or</Box>
-            <TextField
-              value={this.state.optionB}
-              label="Option B"
-              variant="outlined"
-              fullWidth
-              onChange={this.optionBChanged}
-            />
-            <Box mt={3}>
-              <Button
-                variant='contained'
-                disabled={isButtonDisabled}
-                fullWidth
-                onClick={this.onSubmit}
-              >
-                Submit
-              </Button>
-            </Box>
+              onClick={this.onSubmit}
+            >
+              Submit
+            </Button>
           </Box>
-        </Paper>
-      </Fragment>
+        </Box>
+      </Paper>
     )
   }
 }
