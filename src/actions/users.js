@@ -1,5 +1,6 @@
 export const SET_USERS = 'SET_USERS'
 export const ADD_ANSWER = 'ADD_ANSWER'
+export const ADD_QUESTION_FOR_USER = 'ADD_QUESTION_FOR_USER'
 
 export const setUsers = (users) => ({
   type: SET_USERS,
@@ -11,4 +12,10 @@ export const addAnswer = (userId, questionId, option) => ({
   userId,
   questionId,
   option,
+})
+
+export const addQuestionForUser = (userId, questionId) => ({
+  type: ADD_QUESTION_FOR_USER,
+  userId,
+  questionId,
 })

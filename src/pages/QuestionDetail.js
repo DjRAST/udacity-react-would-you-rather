@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Avatar, Box, Paper, styled } from '@material-ui/core'
-import { QuestionHeader } from '../styles/question'
+import { CardHeader } from '../styles/question'
 import AnsweredQuestion from '../components/answeredQuestion'
 import QuestionForm from '../components/questionForm'
 import { questionAnswered } from '../actions/common'
@@ -43,7 +43,7 @@ class QuestionDetailPage extends Component {
       <Fragment>
         <h1>Question Details</h1>
         <Paper>
-          <QuestionHeader p={1}><h3>Poll by {question.author}</h3></QuestionHeader>
+          <CardHeader p={1}><h3>Poll by {question.author}</h3></CardHeader>
           <Box p={1} display="flex" flexDirection="row">
             <Box p={2}><AvatarImage src={avatarURL} /></Box>
             <Box p={2}>

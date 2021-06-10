@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { styled, Box, Button, Paper } from '@material-ui/core'
 import { NavLink } from 'react-router-dom'
 import { QuestionsType } from '../api/model'
-import { QuestionHeader } from '../styles/question'
+import { CardHeader } from '../styles/question'
 
 export const questionsPreviewListPropTypes = {
   questions: QuestionsType.isRequired,
@@ -27,9 +27,9 @@ class QuestionsPreviewList extends Component {
     return (
       questions.map((question) => (
         <Question key={question.id}>
-          <QuestionHeader p={1}>
+          <CardHeader p={1}>
             <h3>Poll by {question.author}</h3>
-          </QuestionHeader>
+          </CardHeader>
           <Box p={1}>
             <h3>Would you rather?</h3>
             <Box display="flex" flexDirection="row" justifyContent="space-between">

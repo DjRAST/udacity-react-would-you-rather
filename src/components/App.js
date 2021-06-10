@@ -10,7 +10,7 @@ import HeaderNav from './HeaderNav'
 import ProtectedRoute from '../components/ProtectedRoute'
 import LoginPage from '../pages/Login'
 import HomePage from '../pages/Home'
-import CreatePollPage from '../pages/CreatePoll'
+import CreateQuestionPage from '../pages/CreateQuestion'
 import LeaderboardPage from '../pages/Leaderboard'
 import QuestionDetail from '../pages/QuestionDetail'
 import NotFoundPage from '../pages/404'
@@ -37,7 +37,7 @@ class App extends Component {
                   <Switch>
                     <Route path="/login" exact component={LoginPage} />
                     <ProtectedRoute path="/" exact component={HomePage} />
-                    <ProtectedRoute path="/add" exact component={CreatePollPage} />
+                    <ProtectedRoute path="/add" exact component={CreateQuestionPage} />
                     <ProtectedRoute path="/leaderboard" exact component={LeaderboardPage} />
                     <ProtectedRoute path="/questions/:question_id" exact component={QuestionDetail} />
                     <Route path="/404" exact component={NotFoundPage} />
